@@ -48,7 +48,8 @@ DELIMITER &&;
 call CountCustomerRentals(5, @rental_count);
 select @rental_count;
 
-
+-- Nhận xét:
+-- Sau khi xóa nhân viên tại "Chi nhánh Hà Nội" khỏi bảng Employees, họ cũng sẽ tự động biến mất khỏi VIEW EmployeeBranch do VIEW này chỉ phản ánh dữ liệu có trong bảng Employees.
 -- 7
 DELIMITER &&
 
