@@ -13,13 +13,17 @@ HAVING SUM(i.total) >200;
 select * from View_High_Value_Customers;
 
 -- 3
-create view View_Popular_Tracks as
-select t.trackid,t.name as track_name,sum(i.quantity) as total_sales
-from track t
-join invoiceline i on t.trackid = i.trackid 
-where  i.unitprice > 1
-group by t.trackid,track_name
-having count(i.quantity) > 15 ;
+
+CREATE VIEW View_Popular_Tracks AS
+SELECT 
+    t.TrackId, 
+    t.Name AS Track_Name, 
+    SUM(il.Quantity) AS Total_Sales
+FROM Track t
+JOIN InvoiceLine il ON t.TrackId = il.TrackId
+WHERE il.UnitPrice > 1.00
+GROUP BY t.TrackId, Track_Name
+HAVING Total_Sales > 15;
 
 select * from View_Popular_Tracks;
 
